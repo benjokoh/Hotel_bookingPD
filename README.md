@@ -41,47 +41,47 @@ Core Entities:
         status (string): Status of the drop-off request (e.g., pending, completed).
 
 # Relationships:
-    A Room can have multiple Reservations (one-to-many relationship).
-    A Guest can have multiple Reservations (one-to-many relationship).
-    A Guest can make multiple PickUpRequests (one-to-many relationship).
-    A Guest can make multiple DropOffRequests (one-to-many relationship).
+* A Room can have multiple Reservations (one-to-many relationship).
+* A Guest can have multiple Reservations (one-to-many relationship).
+* A Guest can make multiple PickUpRequests (one-to-many relationship).
+* A Guest can make multiple DropOffRequests (one-to-many relationship).
 
 # Database Schema:
 
 If you choose to use a database for persistence, here's a simplified representation of the database schema:
 
 # Rooms Table:
-        room_number (Primary Key, String)
-        room_type (String)
-        capacity (Integer)
-        price_per_night (Float)
-        is_available (Boolean)
+* room_number (Primary Key, String)
+* room_type (String)
+* capacity (Integer)
+* price_per_night (Float)
+* is_available (Boolean)
 
 # Guests Table:
-        guest_id (Primary Key, String)
-        name (String)
-        contact_number (String)
-        email (String)
+* guest_id (Primary Key, String)
+* name (String)
+* contact_number (String)
+* email (String)
 
 # Reservations Table:
-        reservation_id (Primary Key, String)
-        guest_id (Foreign Key, References Guests.guest_id)
-        room_number (Foreign Key, References Rooms.room_number)
-        check_in_date (Date)
-        check_out_date (Date)
+* reservation_id (Primary Key, String)
+* guest_id (Foreign Key, References Guests.guest_id)
+* room_number (Foreign Key, References Rooms.room_number)
+* check_in_date (Date)
+* check_out_date (Date)
 
 # PickUpRequests Table:
-        request_id (Primary Key, String)
-        guest_id (Foreign Key, References Guests.guest_id)
-        pick_up_location (String)
-        pick_up_time (DateTime)
-        status (String)
+* request_id (Primary Key, String)
+* guest_id (Foreign Key, References Guests.guest_id)
+* pick_up_location (String)
+* pick_up_time (DateTime)
+* status (String)
 
 # DropOffRequests Table:
-        request_id (Primary Key, String)
-        guest_id (Foreign Key, References Guests.guest_id)
-        drop_off_location (String)
-        drop_off_time (DateTime)
-        status (String)
+* request_id (Primary Key, String)
+* guest_id (Foreign Key, References Guests.guest_id)
+* drop_off_location (String)
+* drop_off_time (DateTime)
+* status (String)
 
 Keep in mind that this is a basic representation of the data model design. Depending on the specific requirements and features you want to implement, you may need to expand or modify the data model accordingly.

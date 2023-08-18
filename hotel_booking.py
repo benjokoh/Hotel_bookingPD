@@ -1,3 +1,5 @@
+"""Hotel room containing the room number,the type of room (single or double), 
+its capacity, availability and a price per night."""
 class Room:
     def __init__(self, room_number, room_type, capacity, price_per_night, is_available=True):
         self.room_number = room_number
@@ -44,6 +46,9 @@ if __name__ == "__main__":
     reservation1 = Reservation("R001", guest1, room1, "2023-08-01", "2023-08-05")
     pickup_request1 = PickUpRequest("P001", guest1, "Airport", "2023-08-01 10:00:00")
     dropoff_request1 = DropOffRequest("D001", guest1, "Hotel", "2023-08-05 14:00:00")
+
+    room2  = Room("201", "Double", 2, 250)
+    guest2 = Guest("A02762450","Benson Okoh","+86-186-240-77395","besomn@gmail.com")
 
     print(f"Room Number: {room1.room_number}")
     print(f"Guest Name: {guest1.name}")
