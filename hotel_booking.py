@@ -1,3 +1,5 @@
+from Forex import ForexConverter
+
 """Hotel room containing the room number,the type of room (single or double), 
 its capacity, availability and a price per night."""
 class Room:
@@ -7,6 +9,15 @@ class Room:
         self.capacity = capacity
         self.price_per_night = price_per_night
         self.is_available = is_available
+
+    def convert_price_to_currency(self, target_currency):
+        forex_converter = ForexConverter()
+        exchange_rate = forex_converter.get_exchange_rate(target_currency)
+        if exchange_rate:
+            converted_price = self.price_per_night * exchange_rate
+            return converted_price
+        else:
+            return None
 
 class Guest:
     def __init__(self, guest_id, name, contact_number, email):
@@ -56,4 +67,14 @@ if __name__ == "__main__":
     print(f"Pick-Up Location: {pickup_request1.pick_up_location}")
     print(f"Drop-Off Time: {dropoff_request1.drop_off_time}")
 
+    # Example Usage
+if __name__ == "__main__":
+    room1 = Room("101", "single", 1, 60)
     
+    target_currency = "NGN"  # Change this to the desired target currency
+    
+    converted_price = room1.convert_price_to_currency(target_currency)
+    if converted_price is not None:
+        print(f"Room Price in {target_currency}: {converted_price}")
+    else:
+        print("Currency conversion rate not available.")
